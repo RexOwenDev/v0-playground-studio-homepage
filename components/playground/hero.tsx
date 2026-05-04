@@ -51,7 +51,7 @@ export function Hero() {
       {/* Content — percentage-based bottom so it scales with any screen height */}
       <div
         className="absolute left-0 right-0 z-10 px-4 sm:px-6 lg:px-8"
-        style={{ bottom: 'max(10%, 80px)' }}
+        style={{ bottom: 'max(15%, 100px)' }}
       >
         {/* PLAYGROUND wordmark */}
         <h1
@@ -67,7 +67,7 @@ export function Hero() {
 
         {/* CTAs — tight to wordmark, wrap on very small screens */}
         <div
-          className="mt-4 sm:mt-5 flex flex-wrap gap-3 transition-all duration-700"
+          className="mt-2 sm:mt-3 flex flex-wrap gap-3 transition-all duration-700"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(16px)',
