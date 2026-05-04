@@ -5,7 +5,7 @@
 // (starting right behind it) takes its place — creating a perfect loop.
 
 export function ScrollMarquee() {
-  const words = 'PLAYGROUND — PLAYGROUND — PLAYGROUND — PLAYGROUND — '
+  const words = 'PLAYGROUND PLAYGROUND PLAYGROUND PLAYGROUND PLAYGROUND PLAYGROUND '
 
   return (
     <div
