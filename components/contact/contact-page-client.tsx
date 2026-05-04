@@ -177,7 +177,7 @@ export function ContactPageClient() {
       role={role}
       aria-checked={selected}
       disabled={disabled}
-      className={`min-h-[72px] sm:min-h-[80px] border flex items-center justify-center text-center px-4 py-4 cursor-pointer select-none transition-all duration-200 rounded-none text-xs uppercase tracking-[0.1em] font-medium leading-snug focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${
+      className={`min-h-[48px] sm:min-h-[64px] border flex items-center justify-center text-center px-3 py-2 sm:py-3 cursor-pointer select-none transition-all duration-200 rounded-none text-[10px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.1em] font-medium leading-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${
         selected
           ? 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white'
           : 'bg-transparent border-current/20 hover:border-current/60 hover:bg-current/5'
@@ -192,18 +192,51 @@ export function ContactPageClient() {
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start">
         {/* LEFT COLUMN */}
         <div className="md:sticky md:top-32">
-          <div className="text-xs tracking-[0.2em] uppercase opacity-40">
+          <div className="text-xs tracking-[0.2em] uppercase opacity-50">
             GET IN TOUCH
           </div>
           <div className="border-t border-current/10 mt-3 mb-6 md:mb-8" />
-          <div className="text-sm">hello@playgroundstudio.com.au</div>
-          <div className="text-sm mt-2">+61 419 248 668</div>
-          <div className="text-sm mt-2 opacity-60">
+          <a href="mailto:hello@playgroundstudio.com.au" className="text-sm hover:opacity-70 transition-opacity block">
+            hello@playgroundstudio.com.au
+          </a>
+          <a href="tel:+61419248668" className="text-sm mt-2 hover:opacity-70 transition-opacity block">
+            +61 419 248 668
+          </a>
+          <p className="text-sm mt-2 opacity-60">
             23 Union St · South Melbourne · VIC 3205
-          </div>
+          </p>
           <div className="border-t border-current/10 mt-8 pt-8">
-            <div className="text-xs opacity-40">
+            <p className="text-xs opacity-50">
               We respond to all enquiries within 24 hours.
+            </p>
+            {/* Social Links */}
+            <div className="flex items-center gap-4 mt-6">
+              <a
+                href="https://www.instagram.com/_PLAYGROUNDSTUDIO/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="opacity-50 hover:opacity-100 transition-opacity"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/company/playgroundstudio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on LinkedIn"
+                className="opacity-50 hover:opacity-100 transition-opacity"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -236,7 +269,7 @@ export function ContactPageClient() {
                     <div
                       role="group"
                       aria-label="Type of work"
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8"
+                      className="grid grid-cols-2 gap-2 mt-6"
                     >
                       {workTypeOptions.map(option => (
                         <Tile
@@ -263,7 +296,7 @@ export function ContactPageClient() {
                     <div
                       role="group"
                       aria-label="Industry sector"
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8"
+                      className="grid grid-cols-2 gap-2 mt-6"
                     >
                       {sectorOptions.map(option => (
                         <Tile
@@ -290,7 +323,7 @@ export function ContactPageClient() {
                     <div
                       role="group"
                       aria-label="Budget range"
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8"
+                      className="grid grid-cols-2 gap-2 mt-6"
                     >
                       {budgetOptions.map(option => (
                         <Tile
@@ -317,7 +350,7 @@ export function ContactPageClient() {
                     <div
                       role="group"
                       aria-label="Timeline"
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8"
+                      className="grid grid-cols-2 gap-2 mt-6"
                     >
                       {timelineOptions.map(option => (
                         <Tile
