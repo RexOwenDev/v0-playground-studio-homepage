@@ -24,7 +24,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Playground Studio — Bold, Brave Brands',
+  title: {
+    default: 'PLAYGROUND',
+    template: '%s | PLAYGROUND',
+  },
   description: 'A Melbourne creative studio of designers, writers, strategists and big dreamers.',
   icons: {
     icon: [

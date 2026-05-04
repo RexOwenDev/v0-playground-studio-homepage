@@ -1,7 +1,7 @@
 import { ContactPageClient } from '@/components/contact/contact-page-client'
 
 export const metadata = {
-  title: 'Start a Project — Playground Studio',
+  title: 'Contact',
   description: 'Tell us about your project. We respond within 24 hours.',
 }
 

@@ -3,7 +3,7 @@ import { SelectedWork } from '@/components/playground/selected-work'
 import { StudioStatement } from '@/components/playground/studio-statement'
 
 export const metadata = {
-  title: 'Playground Studio — Bold, Brave Brands',
+  title: { absolute: 'PLAYGROUND' },
   description: 'A Melbourne creative studio of designers, writers, strategists and big dreamers.',
 }
 

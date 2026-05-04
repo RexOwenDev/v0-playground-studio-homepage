@@ -1,7 +1,7 @@
 import { CapabilitiesPageClient } from '@/components/capabilities/capabilities-page-client'
 
 export const metadata = {
-  title: 'Capability — Playground Studio',
+  title: 'Capabilities',
   description: 'Eight capability areas: strategy, creative, digital, data, social, communications, 3D & motion, and videography.',
 }
 

@@ -152,13 +152,13 @@ export function ContactPageClient() {
     }
   }
 
-  const Tile = ({ 
-    label, 
-    selected, 
-    onClick, 
+  const Tile = ({
+    label,
+    selected,
+    onClick,
     role = 'radio',
-    disabled = false 
-  }: { 
+    disabled = false
+  }: {
     label: string
     selected: boolean
     onClick: () => void
@@ -197,7 +197,7 @@ export function ContactPageClient() {
           <span className="block text-foreground/60">a conversation.</span>
         </h1>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start pb-16 md:pb-32">
         {/* LEFT COLUMN */}
         <div className="md:sticky md:top-24">
@@ -255,13 +255,13 @@ export function ContactPageClient() {
           {!isSubmitted ? (
             <>
               {/* PROGRESS BAR */}
-              <div className="w-full h-[1px] bg-current opacity-10">
+              <div className="w-full h-[1px] bg-foreground/20">
                 <div
-                  className="h-full bg-current transition-all duration-500 ease-out"
+                  className="h-full bg-foreground transition-all duration-500 ease-out"
                   style={{ width: `${step * 20}%` }}
                 />
               </div>
-              <div className="mt-3 text-xs tracking-[0.2em] uppercase opacity-30">
+              <div className="mt-3 text-xs tracking-[0.2em] uppercase text-foreground/60">
                 STEP {step} OF 5
               </div>
 
@@ -272,7 +272,7 @@ export function ContactPageClient() {
                     <h2 className="text-lg sm:text-xl font-medium uppercase tracking-tight">
                       What would you like to create?
                     </h2>
-                    <p className="mt-2 text-xs tracking-[0.1em] uppercase opacity-40">
+                    <p className="mt-2 text-xs tracking-[0.1em] uppercase text-foreground/50">
                       Select all that apply.
                     </p>
                     <div
@@ -299,7 +299,7 @@ export function ContactPageClient() {
                     <h2 className="text-lg sm:text-xl font-medium uppercase tracking-tight">
                       Tell us about your world.
                     </h2>
-                    <p className="mt-2 text-xs tracking-[0.1em] uppercase opacity-40">
+                    <p className="mt-2 text-xs tracking-[0.1em] uppercase text-foreground/50">
                       Your industry shapes our approach.
                     </p>
                     <div
@@ -326,7 +326,7 @@ export function ContactPageClient() {
                     <h2 className="text-lg sm:text-xl font-medium uppercase tracking-tight">
                       What&apos;s your investment?
                     </h2>
-                    <p className="mt-2 text-xs tracking-[0.1em] uppercase opacity-40">
+                    <p className="mt-2 text-xs tracking-[0.1em] uppercase text-foreground/50">
                       This helps us propose the right team.
                     </p>
                     <div
@@ -353,7 +353,7 @@ export function ContactPageClient() {
                     <h2 className="text-lg sm:text-xl font-medium uppercase tracking-tight">
                       When do you need us?
                     </h2>
-                    <p className="mt-2 text-xs tracking-[0.1em] uppercase opacity-40">
+                    <p className="mt-2 text-xs tracking-[0.1em] uppercase text-foreground/50">
                       We&apos;ll make sure the right people are ready.
                     </p>
                     <div
@@ -380,7 +380,7 @@ export function ContactPageClient() {
                     <h2 className="text-lg sm:text-xl font-medium uppercase tracking-tight">
                       Let&apos;s get acquainted.
                     </h2>
-                    <p className="mt-2 text-xs tracking-[0.1em] uppercase opacity-40">
+                    <p className="mt-2 text-xs tracking-[0.1em] uppercase text-foreground/50">
                       We&apos;ll be in touch within 24 hours.
                     </p>
 
@@ -397,7 +397,7 @@ export function ContactPageClient() {
                             placeholder="First name"
                             value={data.firstName}
                             onChange={(e) => handleInputChange('firstName', e.target.value)}
-                            className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                            className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                             required
                           />
                         </div>
@@ -411,7 +411,7 @@ export function ContactPageClient() {
                             placeholder="Last name"
                             value={data.lastName}
                             onChange={(e) => handleInputChange('lastName', e.target.value)}
-                            className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                            className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                             required
                           />
                         </div>
@@ -428,7 +428,7 @@ export function ContactPageClient() {
                           placeholder="Company (optional)"
                           value={data.company}
                           onChange={(e) => handleInputChange('company', e.target.value)}
-                          className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                          className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                         />
                       </div>
 
@@ -443,7 +443,7 @@ export function ContactPageClient() {
                           placeholder="Email"
                           value={data.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
-                          className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                          className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                           required
                         />
                       </div>
@@ -459,7 +459,7 @@ export function ContactPageClient() {
                           placeholder="Phone (optional)"
                           value={data.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
-                          className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                          className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                         />
                       </div>
 
@@ -474,7 +474,7 @@ export function ContactPageClient() {
                           placeholder="How did you hear about us? (optional)"
                           value={data.source}
                           onChange={(e) => handleInputChange('source', e.target.value)}
-                          className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30"
+                          className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50"
                         />
                       </div>
 
@@ -488,7 +488,7 @@ export function ContactPageClient() {
                           placeholder="Message (optional)"
                           value={data.message}
                           onChange={(e) => handleInputChange('message', e.target.value)}
-                          className="border-b border-current/20 pb-3 bg-transparent outline-none w-full text-sm focus:border-current/80 transition-colors duration-200 placeholder:opacity-30 min-h-[80px] resize-none"
+                          className="border-b border-foreground/30 pb-3 bg-transparent outline-none w-full text-sm focus:border-foreground transition-colors duration-200 placeholder:text-foreground/50 min-h-[80px] resize-none"
                         />
                       </div>
                     </div>
@@ -504,7 +504,7 @@ export function ContactPageClient() {
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="text-xs tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+                    className="text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
                   >
                     ← BACK
                   </button>
@@ -528,7 +528,7 @@ export function ContactPageClient() {
               <h2 className="text-[48px] sm:text-[60px] md:text-[80px] font-medium uppercase tracking-tight leading-none">
                 Thank you.
               </h2>
-              <p className="mt-4 md:mt-6 text-xs tracking-[0.15em] uppercase opacity-50">
+              <p className="mt-4 md:mt-6 text-xs tracking-[0.15em] uppercase text-foreground/50">
                 We&apos;ll be in touch within 24 hours.
               </p>
               <Link
