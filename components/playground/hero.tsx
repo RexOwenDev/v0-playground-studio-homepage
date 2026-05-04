@@ -42,14 +42,17 @@ export function Hero() {
       {/* Base overlay */}
       <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
 
-      {/* Bottom gradient — tall enough to cover the content block */}
+      {/* Bottom gradient — tall enough to cover raised content block */}
       <div
-        className="absolute bottom-0 inset-x-0 h-64 sm:h-80 md:h-[32rem] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"
+        className="absolute bottom-0 inset-x-0 h-80 sm:h-80 md:h-[36rem] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Content — left-aligned to match nav, pushed up from bottom on large screens */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16 md:pb-24 lg:pb-32">
+      {/* Content — percentage-based bottom so it scales with any screen height */}
+      <div
+        className="absolute left-0 right-0 z-10 px-4 sm:px-6 lg:px-8"
+        style={{ bottom: 'max(10%, 80px)' }}
+      >
         {/* PLAYGROUND wordmark */}
         <h1
           className="font-black uppercase text-white leading-none tracking-tighter transition-all duration-1000"
@@ -62,7 +65,7 @@ export function Hero() {
           PLAYGROUND
         </h1>
 
-        {/* CTAs — tight gap to wordmark, wrap on small screens */}
+        {/* CTAs — tight to wordmark, wrap on very small screens */}
         <div
           className="mt-4 sm:mt-5 flex flex-wrap gap-3 transition-all duration-700"
           style={{
