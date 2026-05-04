@@ -4,7 +4,10 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function TeamPage() {
+export const metadata = {
+  title: 'Team — Playground Studio',
+  description: 'The people behind the work. Melbourne-based designers, writers, strategists and big dreamers.',
+}
   const teamGridRef = useRef<HTMLDivElement>(null)
   const pillarsRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)

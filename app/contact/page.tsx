@@ -3,7 +3,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-interface FormData {
+export const metadata = {
+  title: 'Start a Project — Playground Studio',
+  description: 'Tell us about your project. We respond within 24 hours.',
+}interface FormData {
   workTypes: string[]
   sector: string
   budget: string
