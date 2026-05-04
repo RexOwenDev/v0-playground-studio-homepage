@@ -1,41 +1,26 @@
 'use client'
 
-// Single-track marquee: one flex row of N items duplicated inside,
-// animated so the whole row translates left by exactly half its own width.
-// The duplicate makes the loop invisible — when the first half exits left,
-// the second half is already in view and snaps seamlessly back to 0.
+// Seamless infinite marquee: Two identical tracks side by side, each animating
+// from 0 to -100% of its own width. When the first exits left, the second 
+// (starting right behind it) takes its place — creating a perfect loop.
 
 export function ScrollMarquee() {
-  const word = 'PLAYGROUND'
-  // 8 copies per half so there's never a gap at any viewport width
-  const half = Array(8).fill(word)
+  const words = 'PLAYGROUND — PLAYGROUND — PLAYGROUND — PLAYGROUND — '
 
   return (
     <div
-      className="overflow-hidden w-full select-none"
+      className="overflow-hidden w-full select-none py-2"
       aria-hidden="true"
     >
-      {/* The track is twice as wide as the viewport.
-          We translate it left by 50% (= one full set of 8 words) then snap back. */}
-      <div className="marquee-track flex whitespace-nowrap will-change-transform">
-        {/* First set */}
-        {half.map((text, i) => (
-          <span
-            key={`a-${i}`}
-            className="inline-block text-[18vw] sm:text-[15vw] md:text-[13vw] lg:text-[11vw] font-black uppercase tracking-tighter leading-none pr-[4vw]"
-          >
-            {text}
-          </span>
-        ))}
-        {/* Duplicate set — identical, placed immediately after */}
-        {half.map((text, i) => (
-          <span
-            key={`b-${i}`}
-            className="inline-block text-[18vw] sm:text-[15vw] md:text-[13vw] lg:text-[11vw] font-black uppercase tracking-tighter leading-none pr-[4vw]"
-          >
-            {text}
-          </span>
-        ))}
+      <div className="flex">
+        {/* First track */}
+        <div className="marquee-track flex-shrink-0 whitespace-nowrap text-[17vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] font-black uppercase tracking-tighter leading-[0.85]">
+          {words}
+        </div>
+        {/* Second track — identical, follows immediately */}
+        <div className="marquee-track flex-shrink-0 whitespace-nowrap text-[17vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] font-black uppercase tracking-tighter leading-[0.85]">
+          {words}
+        </div>
       </div>
     </div>
   )
