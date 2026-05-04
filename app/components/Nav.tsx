@@ -245,23 +245,6 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* CSS for roll animation */}
-      <style jsx>{`
-        @keyframes rollOnce {
-          0% {
-            transform: rotateX(0deg);
-          }
-          50% {
-            transform: rotateX(180deg);
-          }
-          100% {
-            transform: rotateX(360deg);
-          }
-        }
-        .animate-roll-once {
-          animation: rollOnce 0.6s ease-out forwards;
-        }
-      `}</style>
     </>
   )
 }

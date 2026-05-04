@@ -1,47 +1,41 @@
 'use client'
 
 export function ScrollMarquee() {
+  // Creates 6 instances of PLAYGROUND for seamless loop
+  const items = Array(6).fill('PLAYGROUND')
+  
   return (
-    <section 
-      className="py-12 md:py-16 overflow-hidden bg-foreground/[0.02]"
-      aria-label="Featured text marquee"
+    <div 
+      className="overflow-hidden py-4 md:py-6"
+      aria-label="Playground Studio"
     >
-      <div className="relative flex overflow-hidden whitespace-nowrap">
-        {/* First set */}
-        <div className="inline-flex animate-scroll-marquee">
-          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground/20 px-8">
-            Playground
-          </span>
-          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground/20 px-8">
-            Studio
-          </span>
+      <div className="relative flex whitespace-nowrap">
+        {/* First track */}
+        <div className="flex animate-marquee">
+          {items.map((text, i) => (
+            <span 
+              key={i}
+              className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[9vw] font-bold tracking-tighter text-foreground leading-[0.85] px-[2vw]"
+              style={{ fontWeight: 700 }}
+            >
+              {text}
+            </span>
+          ))}
         </div>
         
-        {/* Second set (for seamless loop) */}
-        <div className="inline-flex animate-scroll-marquee" aria-hidden="true">
-          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground/20 px-8">
-            Playground
-          </span>
-          <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground/20 px-8">
-            Studio
-          </span>
+        {/* Second track for seamless loop */}
+        <div className="flex animate-marquee" aria-hidden="true">
+          {items.map((text, i) => (
+            <span 
+              key={`dup-${i}`}
+              className="text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[9vw] font-bold tracking-tighter text-foreground leading-[0.85] px-[2vw]"
+              style={{ fontWeight: 700 }}
+            >
+              {text}
+            </span>
+          ))}
         </div>
       </div>
-      
-      <style jsx>{`
-        @keyframes scroll-marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-scroll-marquee {
-          animation: scroll-marquee 20s linear infinite;
-        }
-      `}</style>
-    </section>
+    </div>
   )
 }
