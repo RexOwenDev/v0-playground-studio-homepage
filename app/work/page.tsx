@@ -6,6 +6,11 @@ import { FilterBar } from '@/components/work/filter-bar'
 import { ProjectGrid } from '@/components/work/project-grid'
 import { WorkCTA } from '@/components/work/cta'
 
+export const metadata = {
+  title: 'Our Work — Playground Studio',
+  description: 'Selected projects across creative, digital, strategy, social, 3D and videography.',
+}
+
 const PROJECTS = [
   { name: 'Saint Haven', capability: 'CREATIVE', sector: 'Residential Property', seed: 'sainthaven' },
   { name: 'Morris Moor', capability: 'CREATIVE', sector: 'Residential Property', seed: 'morrismoor' },
@@ -31,11 +36,11 @@ export default function WorkPage() {
   const [filter, setFilter] = useState('ALL')
 
   return (
-    <main className="min-h-screen">
+    <>
       <WorkHeader />
       <FilterBar activeFilter={filter} onFilterChange={setFilter} />
       <ProjectGrid projects={PROJECTS} activeFilter={filter} />
       <WorkCTA />
-    </main>
+    </>
   )
 }
