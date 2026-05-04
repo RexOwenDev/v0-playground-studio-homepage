@@ -36,17 +36,17 @@ export default function Footer() {
           </Link>
         </div>
         {/* Address */}
-        <p className="text-xs opacity-40 md:text-center">
+        <p className="text-xs opacity-60 md:text-center">
           23 Union St · South Melbourne · VIC 3205
         </p>
         {/* Contact */}
-        <p className="text-xs opacity-40 md:text-right">
+        <p className="text-xs opacity-60 md:text-right">
           hello@playgroundstudio.com.au
         </p>
       </div>
       {/* Bottom bar */}
       <div className="border-t border-current/10 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-xs opacity-20">© 2025 Playground Studio. All rights reserved.</p>
+        <p className="text-xs opacity-50">© 2025 Playground Studio. All rights reserved.</p>
         <nav className="flex gap-6" aria-label="Footer navigation">
           {[
             ['Work', '/work'],
@@ -57,7 +57,7 @@ export default function Footer() {
             <Link
               key={href}
               href={href}
-              className="text-xs tracking-[0.15em] uppercase opacity-30 hover:opacity-70 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+              className="text-xs tracking-[0.15em] uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
             >
               {label}
             </Link>

@@ -13,7 +13,7 @@ export function Hero() {
 
   return (
     <section
-      className="min-h-screen relative overflow-hidden flex flex-col justify-end pb-16 sm:pb-20 px-4 sm:px-8"
+      className="min-h-[calc(100vh-73px)] relative overflow-hidden flex flex-col justify-end pb-12 sm:pb-20 px-4 sm:px-8"
       aria-label="Hero"
     >
       {/* Background — dark placeholder for video */}

@@ -82,7 +82,7 @@ export function SelectedWork() {
       <div className="border-t border-current/10 mt-3 mb-10 md:mb-16" />
 
       {/* Grid */}
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 list-none p-0 m-0" role="list">
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 list-none p-0 m-0" role="list">
         {PROJECTS.map((project, i) => (
           <li key={project.seed}>
             <ProjectCard project={project} index={i} />

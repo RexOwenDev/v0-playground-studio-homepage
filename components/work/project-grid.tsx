@@ -81,7 +81,7 @@ function ProjectCard({ project, index, isVisible }: { project: Project; index: n
 export function ProjectGrid({ projects, activeFilter }: ProjectGridProps) {
   return (
     <section className="px-4 sm:px-8 pb-16 md:pb-32 mt-6 md:mt-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2" role="list">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" role="list">
         {projects.map((project, index) => {
           const isVisible = activeFilter === 'ALL' || project.capability === activeFilter
           return (
@@ -93,8 +93,10 @@ export function ProjectGrid({ projects, activeFilter }: ProjectGridProps) {
       </div>
 
       {/* Count */}
-      <div className="mt-6 text-center">
-        <p className="text-xs tracking-[0.2em] uppercase opacity-20">18 projects.</p>
+      <div className="mt-8 text-center">
+        <p className="text-xs tracking-[0.2em] uppercase opacity-40">
+          {projects.filter(p => activeFilter === 'ALL' || p.capability === activeFilter).length} projects
+        </p>
       </div>
     </section>
   )

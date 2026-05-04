@@ -115,18 +115,26 @@ function CapabilityItem({
     return () => observer.disconnect()
   }, [])
 
+  const isEven = index % 2 === 0
+
   return (
     <div
       ref={ref}
       className={`border-t border-current/10 py-10 md:py-16 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 md:gap-16 items-start transition-all duration-700 ease-out ${
+        isEven ? 'bg-current/[0.02]' : ''
+      } ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[30px]'
       }`}
       style={{
         transitionDelay: isVisible ? `${index * 120}ms` : '0ms',
+        marginLeft: '-1rem',
+        marginRight: '-1rem',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
       }}
     >
       <div>
-        <div className="text-[50px] md:text-[100px] font-medium leading-none text-current opacity-[0.07]">
+        <div className="text-[50px] md:text-[100px] font-semibold leading-none text-current opacity-[0.12]">
           {capability.number}
         </div>
         <div className="mt-2 md:mt-4 text-lg md:text-xl uppercase tracking-tight font-medium leading-tight">
@@ -134,7 +142,7 @@ function CapabilityItem({
         </div>
       </div>
       <div className="md:self-center">
-        <p className="text-sm leading-relaxed max-w-lg opacity-75">{capability.description}</p>
+        <p className="text-sm leading-relaxed max-w-lg opacity-70">{capability.description}</p>
       </div>
     </div>
   )

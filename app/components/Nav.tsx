@@ -51,32 +51,9 @@ export default function Nav() {
           aria-label="Playground Studio — Home"
           className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
         >
-          <svg width="140" height="32" viewBox="0 0 140 32" fill="none">
-            <text
-              x="0"
-              y="14"
-              fontFamily="inherit"
-              fontSize="13"
-              fontWeight="500"
-              letterSpacing="-0.02em"
-              fill="currentColor"
-              style={{ textTransform: 'uppercase' }}
-            >
-              PLAYGROUND
-            </text>
-            <text
-              x="0"
-              y="30"
-              fontFamily="inherit"
-              fontSize="13"
-              fontWeight="500"
-              letterSpacing="-0.02em"
-              fill="currentColor"
-              style={{ textTransform: 'uppercase' }}
-            >
-              STUDIO
-            </text>
-          </svg>
+          <span className="text-sm sm:text-base font-semibold uppercase tracking-tight whitespace-nowrap">
+            Playground Studio
+          </span>
         </Link>
 
         {/* Desktop links */}
@@ -85,7 +62,8 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-xs tracking-[0.2em] uppercase transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${isActive(link.href) ? 'opacity-100 underline underline-offset-4 decoration-[0.5px]' : 'opacity-40 hover:opacity-70'}`}
+              prefetch={true}
+              className={`text-xs tracking-[0.2em] uppercase transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${isActive(link.href) ? 'opacity-100 underline underline-offset-4 decoration-[0.5px]' : 'opacity-50 hover:opacity-100'}`}
             >
               {link.label}
             </Link>
@@ -136,6 +114,7 @@ export default function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={true}
                 className="text-4xl sm:text-5xl font-medium uppercase tracking-tight text-white hover:opacity-60 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {link.label}
