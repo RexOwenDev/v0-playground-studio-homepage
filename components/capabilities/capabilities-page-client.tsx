@@ -198,11 +198,11 @@ function CapabilityItem({
           <p className="text-sm md:text-base leading-relaxed text-foreground/50">
             {capability.description}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-start content-start gap-2">
             {capability.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="text-xs px-3 py-1.5 border border-foreground/15 rounded-full text-foreground/60 whitespace-nowrap"
+                className="inline-block text-xs px-3 py-1.5 border border-foreground/15 rounded-full text-foreground/60 whitespace-nowrap flex-shrink-0"
               >
                 {tag}
               </span>
