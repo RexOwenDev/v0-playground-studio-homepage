@@ -22,7 +22,7 @@ export function Hero() {
       className="relative h-[100dvh] min-h-[600px] overflow-hidden"
       aria-label="Hero"
     >
-      {/* Video background — object-cover fills every screen size */}
+      {/* Video background */}
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
@@ -42,14 +42,14 @@ export function Hero() {
       {/* Base overlay */}
       <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
 
-      {/* Bottom gradient — scales up on larger screens */}
+      {/* Bottom gradient — tall enough to cover the content block */}
       <div
-        className="absolute bottom-0 inset-x-0 h-56 sm:h-72 md:h-[28rem] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"
+        className="absolute bottom-0 inset-x-0 h-64 sm:h-80 md:h-[32rem] bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Bottom-anchored content */}
-      <div className="absolute bottom-0 inset-x-0 z-10 px-6 sm:px-10 md:px-16 pb-10 sm:pb-14 md:pb-20">
+      {/* Content — left-aligned to match nav, pushed up from bottom on large screens */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16 md:pb-24 lg:pb-32">
         {/* PLAYGROUND wordmark */}
         <h1
           className="font-black uppercase text-white leading-none tracking-tighter transition-all duration-1000"
@@ -62,9 +62,9 @@ export function Hero() {
           PLAYGROUND
         </h1>
 
-        {/* CTAs — flex-wrap so they stack on very small screens */}
+        {/* CTAs — tight gap to wordmark, wrap on small screens */}
         <div
-          className="mt-5 flex flex-wrap gap-3 transition-all duration-700"
+          className="mt-4 sm:mt-5 flex flex-wrap gap-3 transition-all duration-700"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(16px)',
