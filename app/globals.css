@@ -180,8 +180,7 @@
 }
 
 .marquee-track {
-  animation: marquee 28s linear infinite;
-  /* pausing via hover feels nice and lets users read */
+  animation: marquee 12s linear infinite;
 }
 
 .marquee-track:hover {
