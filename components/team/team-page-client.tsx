@@ -18,21 +18,21 @@ export function TeamPageClient() {
       title: 'Owner & Director',
       bio: 'Leading Playground with vision and passion for over a decade.',
       image: 'https://www.datocms-assets.com/105312/1692929236-sally.jpg',
-      linkedin: 'https://www.linkedin.com/company/playgroundstudio/'
+      linkedin: 'https://www.linkedin.com/in/sally-dobell-21527a22/'
     },
     { 
       name: 'Olivia Finlayson', 
       title: 'Head of Creative',
       bio: 'Driving creative excellence across all brand touchpoints.',
       image: 'https://www.datocms-assets.com/105312/1692929280-olivia.jpg',
-      linkedin: 'https://www.linkedin.com/company/playgroundstudio/'
+      linkedin: 'https://www.linkedin.com/in/oliviafinlayson/'
     },
     { 
       name: 'Millie Romanin', 
       title: 'Managing Director',
       bio: 'Ensuring seamless operations and client success.',
       image: 'https://www.datocms-assets.com/105312/1772172759-staff-photo-millie.png',
-      linkedin: 'https://www.linkedin.com/company/playgroundstudio/'
+      linkedin: 'https://www.linkedin.com/in/milliecasey/'
     },
   ]
 

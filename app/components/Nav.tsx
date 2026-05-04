@@ -87,14 +87,17 @@ export default function Nav() {
           >
             <span 
               ref={logoRef}
-              className={`inline-block text-sm sm:text-base font-semibold tracking-tight text-foreground transition-all duration-700 ease-out group-hover:text-foreground/70 ${
+              className={`inline-block font-bold tracking-tighter text-foreground transition-all duration-700 ease-out group-hover:text-foreground/70 text-base sm:text-lg ${
                 hasRolled ? 'animate-roll-once' : ''
               }`}
               style={{
                 transformOrigin: 'center center',
+                letterSpacing: '-0.02em',
+                fontWeight: 700,
+                fontSize: 'clamp(14px, 3vw, 18px)',
               }}
             >
-              Playground Studio
+              PLAYGROUND
             </span>
           </Link>
 
@@ -135,7 +138,7 @@ export default function Nav() {
                     <Moon size={16} strokeWidth={1.5} />
                   )
                 ) : (
-                  <span className="w-4 h-4 block rounded-full bg-foreground/20" />
+                  <div className="w-4 h-4 rounded-full bg-foreground/20" />
                 )}
               </span>
             </button>
@@ -165,7 +168,7 @@ export default function Nav() {
       >
         {/* Close Button */}
         <div className="flex justify-between items-center p-4 sm:p-6">
-          <span className="text-sm font-semibold tracking-tight text-foreground">Playground Studio</span>
+          <span className="font-bold tracking-tighter text-foreground" style={{ fontSize: 'clamp(14px, 3vw, 18px)' }}>PLAYGROUND</span>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
