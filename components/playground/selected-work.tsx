@@ -38,7 +38,7 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
     <Link
       ref={ref}
       href="/work"
-      className="block group relative focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current transition-all duration-[600ms] ease-out"
+      className="block group relative focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground transition-all duration-[600ms] ease-out"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(24px)',
@@ -49,7 +49,7 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
       aria-label={`View ${project.name} project`}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-foreground/5">
         {/* Gradient overlay on hover */}
         <div 
           className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent z-10 transition-opacity duration-300 ${
@@ -84,14 +84,16 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
       {/* Caption */}
       <div className="mt-4 flex justify-between items-start gap-4">
         <div>
-          <h3 className="text-base sm:text-lg font-medium tracking-tight group-hover:opacity-70 transition-opacity">
+          <h3 className="text-base sm:text-lg font-medium tracking-tight text-foreground group-hover:text-foreground/70 transition-colors">
             {project.name}
           </h3>
-          <p className="text-xs sm:text-sm opacity-50 mt-0.5">{project.sector}</p>
+          <p className="text-xs sm:text-sm text-foreground/50 mt-0.5">{project.sector}</p>
         </div>
         <div 
-          className={`p-2 border border-current/20 rounded-full transition-all duration-300 ${
-            isHovered ? 'bg-current text-background' : ''
+          className={`p-2 border rounded-full transition-all duration-300 ${
+            isHovered 
+              ? 'bg-foreground text-background border-foreground' 
+              : 'border-foreground/20 text-foreground'
           }`}
         >
           <ArrowUpRight size={14} />
@@ -133,14 +135,14 @@ export function SelectedWork() {
         }`}
       >
         <div>
-          <p className="text-xs tracking-widest uppercase opacity-40 mb-2">Featured</p>
-          <h2 id="work-heading" className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight">
+          <p className="text-xs tracking-widest uppercase text-foreground/40 mb-2">Featured</p>
+          <h2 id="work-heading" className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-foreground">
             Selected Work
           </h2>
         </div>
         <Link
           href="/work"
-          className="text-sm opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 group"
+          className="text-sm text-foreground/60 hover:text-foreground transition-colors flex items-center gap-1 group"
         >
           View all projects
           <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

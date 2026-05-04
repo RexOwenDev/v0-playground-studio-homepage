@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
 
 export function StudioStatement() {
   const ref = useRef<HTMLElement>(null)
@@ -26,29 +25,25 @@ export function StudioStatement() {
   return (
     <section
       ref={ref}
-      className="py-16 md:py-32 px-4 sm:px-8 border-t border-current/10 transition-all duration-700 ease-out"
+      className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-foreground/[0.02] transition-all duration-700 ease-out"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(20px)',
       }}
       aria-labelledby="statement-heading"
     >
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center">
+        <p className="text-xs tracking-widest uppercase text-foreground/40 mb-6">Who we are</p>
         <h2
           id="statement-heading"
-          className="text-2xl sm:text-3xl md:text-5xl font-medium uppercase tracking-tight leading-tight text-balance"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.2] text-foreground text-balance"
         >
-          Designers. Writers. Strategists. Big dreamers.
+          Designers. Writers. Strategists.
+          <span className="block text-foreground/60 mt-2">Big dreamers.</span>
         </h2>
-
-        <div className="mt-6">
-          <Link
-            href="/contact"
-            className="inline-block text-xs tracking-[0.15em] uppercase border border-current/30 px-6 py-3 hover:bg-current hover:text-background transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-          >
-            Start a project →
-          </Link>
-        </div>
+        <p className="mt-8 text-base sm:text-lg text-foreground/50 max-w-2xl mx-auto leading-relaxed">
+          We&apos;re a design-led branding and communications studio. We make work that moves you.
+        </p>
       </div>
     </section>
   )

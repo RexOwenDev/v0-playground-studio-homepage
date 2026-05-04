@@ -2,27 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
-
-// Animated gradient orb component
-function GradientOrb({ className, delay = 0 }: { className?: string; delay?: number }) {
-  const [visible, setVisible] = useState(false)
-  
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), delay)
-    return () => clearTimeout(t)
-  }, [delay])
-  
-  return (
-    <div 
-      className={`absolute rounded-full blur-3xl transition-all duration-1000 ${className}`}
-      style={{
-        opacity: visible ? 0.3 : 0,
-        transform: visible ? 'scale(1)' : 'scale(0.8)',
-      }}
-      aria-hidden="true"
-    />
-  )
-}
+import { ArrowRight } from 'lucide-react'
 
 export function Hero() {
   const [visible, setVisible] = useState(false)
@@ -51,28 +31,29 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-20"
+      className="relative min-h-[85vh] flex flex-col justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-16 md:py-20"
       aria-label="Hero"
     >
-      {/* Animated Background Elements */}
+      {/* Animated Background Elements - Subtle gradient orbs */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{
           transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
           transition: 'transform 0.3s ease-out',
         }}
+        aria-hidden="true"
       >
-        <GradientOrb 
-          className="w-[600px] h-[600px] -top-48 -right-48 bg-purple-500/20 dark:bg-purple-400/10" 
-          delay={200}
+        <div 
+          className="absolute w-[500px] h-[500px] -top-32 -right-32 rounded-full blur-3xl bg-violet-500/10 dark:bg-violet-400/5 transition-opacity duration-1000"
+          style={{ opacity: visible ? 1 : 0 }}
         />
-        <GradientOrb 
-          className="w-[500px] h-[500px] top-1/2 -left-32 bg-blue-500/20 dark:bg-blue-400/10" 
-          delay={400}
+        <div 
+          className="absolute w-[400px] h-[400px] top-1/2 -left-24 rounded-full blur-3xl bg-blue-500/10 dark:bg-blue-400/5 transition-opacity duration-1000"
+          style={{ opacity: visible ? 1 : 0, transitionDelay: '200ms' }}
         />
-        <GradientOrb 
-          className="w-[400px] h-[400px] -bottom-32 right-1/4 bg-emerald-500/20 dark:bg-emerald-400/10" 
-          delay={600}
+        <div 
+          className="absolute w-[350px] h-[350px] -bottom-24 right-1/4 rounded-full blur-3xl bg-emerald-500/10 dark:bg-emerald-400/5 transition-opacity duration-1000"
+          style={{ opacity: visible ? 1 : 0, transitionDelay: '400ms' }}
         />
       </div>
 
@@ -80,9 +61,9 @@ export function Hero() {
       <div className="relative z-10 max-w-5xl">
         {/* Tagline */}
         <p 
-          className="text-xs tracking-widest uppercase opacity-50 mb-6 transition-all duration-700"
+          className="text-xs tracking-widest uppercase text-foreground/50 mb-6 transition-all duration-700"
           style={{
-            opacity: visible ? 0.5 : 0,
+            opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(10px)',
           }}
         >
@@ -91,7 +72,7 @@ export function Hero() {
 
         {/* Main Headline */}
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[1.05] transition-all duration-700"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight leading-[1.05] text-foreground transition-all duration-700"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(30px)',
@@ -99,16 +80,16 @@ export function Hero() {
           }}
         >
           We design brands that
-          <span className="block mt-2 bg-gradient-to-r from-current via-current/80 to-current bg-clip-text">
+          <span className="block mt-2 text-foreground/80">
             move people.
           </span>
         </h1>
 
         {/* Description */}
         <p
-          className="mt-8 text-lg sm:text-xl md:text-2xl opacity-70 max-w-2xl leading-relaxed transition-all duration-700"
+          className="mt-8 text-lg sm:text-xl md:text-2xl text-foreground/60 max-w-2xl leading-relaxed transition-all duration-700"
           style={{
-            opacity: visible ? 0.7 : 0,
+            opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(20px)',
             transitionDelay: '200ms',
           }}
@@ -128,30 +109,32 @@ export function Hero() {
         >
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-sm tracking-wide bg-current text-background px-6 py-3 hover:opacity-90 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+            className="inline-flex items-center gap-2 text-sm tracking-wide bg-foreground text-background px-6 py-3.5 hover:bg-foreground/90 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             View our work
+            <ArrowRight size={16} />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 text-sm tracking-wide border border-current/30 px-6 py-3 hover:border-current/60 hover:bg-current/5 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+            className="inline-flex items-center gap-2 text-sm tracking-wide border border-foreground/20 text-foreground px-6 py-3.5 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             Start a project
           </Link>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - positioned to not overlap content */}
       <div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-700 pointer-events-none hidden md:flex"
         style={{
           opacity: visible ? 0.4 : 0,
           transitionDelay: '500ms',
         }}
+        aria-hidden="true"
       >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-current/30 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-current animate-scroll-line" />
+        <span className="text-xs tracking-widest uppercase text-foreground/60">Scroll</span>
+        <div className="w-px h-8 bg-foreground/20 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-foreground/60 animate-scroll-line" />
         </div>
       </div>
 

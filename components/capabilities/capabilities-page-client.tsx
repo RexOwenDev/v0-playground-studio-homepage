@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Plus, Minus } from 'lucide-react'
+import { ArrowRight, Plus, Minus } from 'lucide-react'
 
 export function CapabilitiesPageClient() {
   return (
@@ -26,16 +26,16 @@ function CapabilitiesHeader() {
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl">
         <p 
-          className="text-xs tracking-widest uppercase opacity-40 mb-4 transition-all duration-700"
+          className="text-xs tracking-widest uppercase text-foreground/40 mb-4 transition-all duration-700"
           style={{
-            opacity: isVisible ? 0.4 : 0,
+            opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
           }}
         >
           What we do
         </p>
         <h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] transition-all duration-700"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] text-foreground transition-all duration-700"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -43,12 +43,12 @@ function CapabilitiesHeader() {
           }}
         >
           Full-service creative
-          <span className="block opacity-60">for ambitious brands.</span>
+          <span className="block text-foreground/60">for ambitious brands.</span>
         </h1>
         <p 
-          className="mt-6 text-lg md:text-xl opacity-60 max-w-2xl leading-relaxed transition-all duration-700"
+          className="mt-6 text-lg md:text-xl text-foreground/50 max-w-2xl leading-relaxed transition-all duration-700"
           style={{
-            opacity: isVisible ? 0.6 : 0,
+            opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
             transitionDelay: '100ms',
           }}
@@ -123,7 +123,7 @@ function CapabilityList() {
 
   return (
     <section className="px-4 sm:px-6 lg:px-8 pb-16 md:pb-24">
-      <div className="border-t border-current/10" />
+      <div className="border-t border-foreground/10" />
       {capabilities.map((capability, index) => (
         <CapabilityItem key={capability.number} capability={capability} index={index} />
       ))}
@@ -163,7 +163,7 @@ function CapabilityItem({
   return (
     <div
       ref={ref}
-      className={`border-b border-current/10 transition-all duration-500 ${
+      className={`border-b border-foreground/10 transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{
@@ -174,16 +174,16 @@ function CapabilityItem({
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full py-6 md:py-8 flex items-center justify-between gap-4 text-left group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+        className="w-full py-6 md:py-8 flex items-center justify-between gap-4 text-left group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         aria-expanded={isExpanded}
       >
         <div className="flex items-center gap-4 md:gap-8">
-          <span className="text-xs md:text-sm font-mono opacity-30 w-6">{capability.number}</span>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight group-hover:opacity-70 transition-opacity">
+          <span className="text-sm md:text-base font-mono text-foreground/50 w-8">{capability.number}</span>
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-foreground group-hover:text-foreground/70 transition-colors">
             {capability.name}
           </h3>
         </div>
-        <div className={`p-2 border border-current/20 rounded-full transition-all duration-300 ${isExpanded ? 'rotate-0 bg-current text-background' : 'rotate-0'}`}>
+        <div className={`p-2 border rounded-full transition-all duration-300 ${isExpanded ? 'bg-foreground text-background border-foreground' : 'border-foreground/20 text-foreground'}`}>
           {isExpanded ? <Minus size={16} /> : <Plus size={16} />}
         </div>
       </button>
@@ -191,18 +191,18 @@ function CapabilityItem({
       {/* Expandable Content */}
       <div 
         className={`overflow-hidden transition-all duration-500 ease-out ${
-          isExpanded ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'
+          isExpanded ? 'max-h-[500px] opacity-100 pb-8' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="pl-10 md:pl-14 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <p className="text-sm md:text-base leading-relaxed opacity-60">
+        <div className="pl-12 md:pl-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <p className="text-sm md:text-base leading-relaxed text-foreground/50">
             {capability.description}
           </p>
           <div className="flex flex-wrap gap-2">
             {capability.tags.map((tag) => (
               <span 
                 key={tag} 
-                className="text-xs px-3 py-1.5 border border-current/15 rounded-full opacity-60"
+                className="text-xs px-3 py-1.5 border border-foreground/15 rounded-full text-foreground/60 whitespace-nowrap"
               >
                 {tag}
               </span>
@@ -241,25 +241,25 @@ function ClientSectors() {
   return (
     <section 
       ref={ref}
-      className={`px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-current/[0.02] transition-all duration-700 ${
+      className={`px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-foreground/[0.02] transition-all duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       <div className="max-w-6xl mx-auto">
-        <p className="text-xs tracking-widest uppercase opacity-40 mb-6">Industries we work with</p>
-        <div className="flex flex-wrap gap-3">
+        <p className="text-xs tracking-widest uppercase text-foreground/40 mb-6">Industries we work with</p>
+        <div className="flex flex-wrap gap-x-1 gap-y-2">
           {sectors.map((sector, i) => (
             <span 
               key={sector}
-              className="text-sm md:text-base opacity-60 transition-all duration-500"
+              className="text-sm md:text-base text-foreground/60 transition-all duration-500"
               style={{
-                opacity: isVisible ? 0.6 : 0,
+                opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
                 transitionDelay: `${i * 30}ms`,
               }}
             >
               {sector}
-              {i < sectors.length - 1 && <span className="ml-3 opacity-30">•</span>}
+              {i < sectors.length - 1 && <span className="ml-1 mr-1 text-foreground/20">•</span>}
             </span>
           ))}
         </div>
@@ -290,16 +290,16 @@ function StartProjectCTA() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Ready to work together?</p>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight mb-8">
+      <p className="text-xs tracking-widest uppercase text-foreground/40 mb-4">Ready to work together?</p>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-foreground mb-8">
         Let&apos;s build something bold.
       </h2>
       <Link
         href="/contact"
-        className="inline-flex items-center gap-2 text-sm tracking-wide bg-current text-background px-6 py-3 hover:opacity-90 transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+        className="inline-flex items-center gap-2 text-sm tracking-wide bg-foreground text-background px-6 py-3.5 hover:bg-foreground/90 transition-colors duration-200 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
         Start a project
-        <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
       </Link>
     </section>
   )

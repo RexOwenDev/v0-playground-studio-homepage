@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowUpRight, Linkedin } from 'lucide-react'
+import { ArrowRight, Linkedin } from 'lucide-react'
 
 export function TeamPageClient() {
   const [headerVisible, setHeaderVisible] = useState(false)
@@ -57,16 +57,16 @@ export function TeamPageClient() {
       <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl">
           <p 
-            className="text-xs tracking-widest uppercase opacity-40 mb-4 transition-all duration-700"
+            className="text-xs tracking-widest uppercase text-foreground/40 mb-4 transition-all duration-700"
             style={{
-              opacity: headerVisible ? 0.4 : 0,
+              opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? 'translateY(0)' : 'translateY(10px)',
             }}
           >
             Our team
           </p>
           <h1 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] transition-all duration-700"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] text-foreground transition-all duration-700"
             style={{
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -74,12 +74,12 @@ export function TeamPageClient() {
             }}
           >
             Fiercely passionate
-            <span className="block opacity-60">creative minds.</span>
+            <span className="block text-foreground/60">creative minds.</span>
           </h1>
           <p 
-            className="mt-6 text-lg md:text-xl opacity-60 max-w-2xl leading-relaxed transition-all duration-700"
+            className="mt-6 text-lg md:text-xl text-foreground/50 max-w-2xl leading-relaxed transition-all duration-700"
             style={{
-              opacity: headerVisible ? 0.6 : 0,
+              opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? 'translateY(0)' : 'translateY(20px)',
               transitionDelay: '100ms',
             }}
@@ -100,8 +100,8 @@ export function TeamPageClient() {
       </section>
 
       {/* VALUES */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-current/10">
-        <p className="text-xs tracking-widest uppercase opacity-40 mb-12">How we work</p>
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-foreground/10">
+        <p className="text-xs tracking-widest uppercase text-foreground/40 mb-12">How we work</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {values.map((value, index) => (
             <ValueCard key={value.title} value={value} index={index} />
@@ -110,7 +110,7 @@ export function TeamPageClient() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 text-center bg-foreground/[0.02]">
         <TeamCTA />
       </section>
     </>
@@ -153,7 +153,7 @@ function TeamMemberCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image */}
-      <div className="aspect-[4/5] overflow-hidden relative bg-neutral-100 dark:bg-neutral-900 rounded-sm">
+      <div className="aspect-[4/5] overflow-hidden relative bg-foreground/5 rounded-sm">
         <Image
           src={member.image}
           alt={`${member.name}, ${member.title} at Playground Studio`}
@@ -185,9 +185,9 @@ function TeamMemberCard({
       
       {/* Info */}
       <div className="mt-4">
-        <h3 className="text-lg font-medium tracking-tight">{member.name}</h3>
-        <p className="text-sm opacity-50 mt-0.5">{member.title}</p>
-        <p className="text-sm opacity-40 mt-2 leading-relaxed">{member.bio}</p>
+        <h3 className="text-lg font-medium tracking-tight text-foreground">{member.name}</h3>
+        <p className="text-sm text-foreground/50 mt-0.5">{member.title}</p>
+        <p className="text-sm text-foreground/40 mt-2 leading-relaxed">{member.bio}</p>
       </div>
     </div>
   )
@@ -220,13 +220,13 @@ function ValueCard({
   return (
     <div
       ref={ref}
-      className={`border-t border-current/10 pt-6 transition-all duration-700 ${
+      className={`border-t border-foreground/10 pt-6 transition-all duration-700 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <h3 className="text-xl font-medium tracking-tight">{value.title}</h3>
-      <p className="mt-3 text-sm opacity-60 leading-relaxed">{value.description}</p>
+      <h3 className="text-xl font-medium tracking-tight text-foreground">{value.title}</h3>
+      <p className="mt-3 text-sm text-foreground/50 leading-relaxed">{value.description}</p>
     </div>
   )
 }
@@ -256,21 +256,21 @@ function TeamCTA() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Want to see what we have made?</p>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight mb-8">
+      <p className="text-xs tracking-widest uppercase text-foreground/40 mb-4">Want to see what we have made?</p>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-foreground mb-8">
         Explore our work.
       </h2>
       <div className="flex flex-wrap justify-center gap-4">
         <Link
           href="/work"
-          className="inline-flex items-center gap-2 text-sm tracking-wide bg-current text-background px-6 py-3 hover:opacity-90 transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+          className="inline-flex items-center gap-2 text-sm tracking-wide bg-foreground text-background px-6 py-3.5 hover:bg-foreground/90 transition-colors duration-200 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           View projects
-          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
         </Link>
         <Link
           href="/contact"
-          className="inline-flex items-center gap-2 text-sm tracking-wide border border-current/30 px-6 py-3 hover:border-current/60 hover:bg-current/5 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+          className="inline-flex items-center gap-2 text-sm tracking-wide border border-foreground/20 text-foreground px-6 py-3.5 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           Start a project
         </Link>

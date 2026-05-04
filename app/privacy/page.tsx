@@ -11,11 +11,11 @@ export default function PrivacyPage() {
     <article className="px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <header className="py-16 md:py-24 max-w-6xl">
-        <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Legal</p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.1]">
+        <p className="text-xs tracking-widest uppercase text-foreground/40 mb-4">Legal</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.1] text-foreground">
           Privacy Policy
         </h1>
-        <p className="mt-4 text-sm opacity-50">
+        <p className="mt-4 text-sm text-foreground/50">
           Last updated: September 2023
         </p>
       </header>
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       <div className="max-w-3xl pb-16 md:pb-32">
 
       {/* Content */}
-      <div className="prose prose-sm max-w-none space-y-8 text-sm leading-relaxed opacity-80">
+      <div className="prose prose-sm max-w-none space-y-8 text-sm leading-relaxed text-foreground/70">
         <Section title="Overview">
           <p>
             This privacy policy (&quot;Privacy Policy&quot;) sets out how PLAYGROUND CREATIVE PTY LTD ABN 60 628 625 488 trading as Playground Studio and our related bodies corporate (&quot;we&quot;,&quot;our&quot;,&quot;us&quot;) collect, store, use, protect, share and disclose your personal information. It applies to this website and all related websites, web and mobile applications, services and tools (together the &quot;Website&quot;). By visiting or using the Website you agree to the collection, storage, usage and disclosure of your personal information by us in the manner described in this Privacy Policy.

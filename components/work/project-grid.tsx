@@ -70,8 +70,8 @@ function ProjectCard({ project, index, isVisible }: { project: Project; index: n
 
         {/* Caption */}
         <div className="mt-3 flex justify-between items-baseline">
-          <span className="text-sm uppercase tracking-[0.08em] font-medium">{project.name}</span>
-          <span className="text-xs opacity-40">{project.sector}</span>
+          <span className="text-sm uppercase tracking-[0.08em] font-medium text-foreground">{project.name}</span>
+          <span className="text-xs text-foreground/50">{project.sector}</span>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ export function ProjectGrid({ projects, activeFilter }: ProjectGridProps) {
 
       {/* Count */}
       <div className="mt-8 text-center">
-        <p className="text-xs tracking-[0.2em] uppercase opacity-40">
+        <p className="text-xs tracking-widest uppercase text-foreground/40">
           {projects.filter(p => activeFilter === 'ALL' || p.capability === activeFilter).length} projects
         </p>
       </div>

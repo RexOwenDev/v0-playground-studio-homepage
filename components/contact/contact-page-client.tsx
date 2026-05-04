@@ -177,10 +177,10 @@ export function ContactPageClient() {
       role={role}
       aria-checked={selected}
       disabled={disabled}
-      className={`min-h-[48px] sm:min-h-[64px] border flex items-center justify-center text-center px-3 py-2 sm:py-3 cursor-pointer select-none transition-all duration-200 rounded-none text-[10px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.1em] font-medium leading-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${
+      className={`min-h-[48px] sm:min-h-[64px] border flex items-center justify-center text-center px-3 py-2 sm:py-3 cursor-pointer select-none transition-all duration-200 rounded-none text-[10px] sm:text-xs uppercase tracking-[0.08em] sm:tracking-[0.1em] font-medium leading-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
         selected
-          ? 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white'
-          : 'bg-transparent border-current/20 hover:border-current/60 hover:bg-current/5'
+          ? 'bg-foreground text-background border-foreground'
+          : 'bg-transparent text-foreground border-foreground/20 hover:border-foreground/50 hover:bg-foreground/5'
       }`}
     >
       {label}
@@ -191,31 +191,31 @@ export function ContactPageClient() {
     <div className="px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="py-16 md:py-24 max-w-6xl">
-        <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Get in touch</p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1]">
+        <p className="text-xs tracking-widest uppercase text-foreground/40 mb-4">Get in touch</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1] text-foreground">
           Let&apos;s start
-          <span className="block opacity-60">a conversation.</span>
+          <span className="block text-foreground/60">a conversation.</span>
         </h1>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start pb-16 md:pb-32">
         {/* LEFT COLUMN */}
         <div className="md:sticky md:top-24">
-          <div className="text-xs tracking-[0.2em] uppercase opacity-50">
+          <div className="text-xs tracking-widest uppercase text-foreground/40">
             GET IN TOUCH
           </div>
-          <div className="border-t border-current/10 mt-3 mb-6 md:mb-8" />
-          <a href="mailto:hello@playgroundstudio.com.au" className="text-sm hover:opacity-70 transition-opacity block">
+          <div className="border-t border-foreground/10 mt-3 mb-6 md:mb-8" />
+          <a href="mailto:hello@playgroundstudio.com.au" className="text-sm text-foreground hover:text-foreground/70 transition-colors block">
             hello@playgroundstudio.com.au
           </a>
-          <a href="tel:+61419248668" className="text-sm mt-2 hover:opacity-70 transition-opacity block">
+          <a href="tel:+61419248668" className="text-sm mt-2 text-foreground hover:text-foreground/70 transition-colors block">
             +61 419 248 668
           </a>
-          <p className="text-sm mt-2 opacity-60">
+          <p className="text-sm mt-2 text-foreground/50">
             23 Union St · South Melbourne · VIC 3205
           </p>
-          <div className="border-t border-current/10 mt-8 pt-8">
-            <p className="text-xs opacity-50">
+          <div className="border-t border-foreground/10 mt-8 pt-8">
+            <p className="text-xs text-foreground/40">
               We respond to all enquiries within 24 hours.
             </p>
             {/* Social Links */}
@@ -225,7 +225,7 @@ export function ContactPageClient() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Instagram"
-                className="opacity-50 hover:opacity-100 transition-opacity"
+                className="text-foreground/40 hover:text-foreground transition-colors"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -238,7 +238,7 @@ export function ContactPageClient() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on LinkedIn"
-                className="opacity-50 hover:opacity-100 transition-opacity"
+                className="text-foreground/40 hover:text-foreground transition-colors"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
