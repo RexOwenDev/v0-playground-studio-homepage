@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import Link from 'next/link'
 
@@ -19,6 +19,8 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hasRolled, setHasRolled] = useState(false)
+  const logoRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -26,11 +28,17 @@ export default function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      const isScrolled = window.scrollY > 50
+      setScrolled(isScrolled)
+      
+      // Trigger roll animation once when first scrolling down
+      if (isScrolled && !hasRolled) {
+        setHasRolled(true)
+      }
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [hasRolled])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -71,13 +79,21 @@ export default function Nav() {
           className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4 lg:py-5"
           aria-label="Main navigation"
         >
-          {/* Logo */}
+          {/* Logo with Rolling Animation */}
           <Link 
             href="/" 
-            className="group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+            className="group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground overflow-hidden"
             aria-label="Playground Studio - Home"
           >
-            <span className="text-sm sm:text-base font-semibold tracking-tight text-foreground transition-colors group-hover:text-foreground/70">
+            <span 
+              ref={logoRef}
+              className={`inline-block text-sm sm:text-base font-semibold tracking-tight text-foreground transition-all duration-700 ease-out group-hover:text-foreground/70 ${
+                hasRolled ? 'animate-roll-once' : ''
+              }`}
+              style={{
+                transformOrigin: 'center center',
+              }}
+            >
               Playground Studio
             </span>
           </Link>
@@ -225,6 +241,24 @@ export default function Nav() {
           </div>
         </div>
       </div>
+
+      {/* CSS for roll animation */}
+      <style jsx>{`
+        @keyframes rollOnce {
+          0% {
+            transform: rotateX(0deg);
+          }
+          50% {
+            transform: rotateX(180deg);
+          }
+          100% {
+            transform: rotateX(360deg);
+          }
+        }
+        .animate-roll-once {
+          animation: rollOnce 0.6s ease-out forwards;
+        }
+      `}</style>
     </>
   )
 }
