@@ -82,20 +82,14 @@ export default function Nav() {
           {/* Logo with Rolling Animation */}
           <Link 
             href="/" 
-            className="group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground overflow-hidden"
+            className="group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
             aria-label="Playground Studio - Home"
           >
             <span 
               ref={logoRef}
-              className={`inline-block font-bold tracking-tighter text-foreground transition-all duration-700 ease-out group-hover:text-foreground/70 text-base sm:text-lg ${
+              className={`pg-logo inline-block font-black tracking-tighter text-foreground group-hover:opacity-70 transition-opacity duration-200 ${
                 hasRolled ? 'animate-roll-once' : ''
               }`}
-              style={{
-                transformOrigin: 'center center',
-                letterSpacing: '-0.02em',
-                fontWeight: 700,
-                fontSize: 'clamp(14px, 3vw, 18px)',
-              }}
             >
               PLAYGROUND
             </span>
@@ -168,7 +162,7 @@ export default function Nav() {
       >
         {/* Close Button */}
         <div className="flex justify-between items-center p-4 sm:p-6">
-          <span className="font-bold tracking-tighter text-foreground" style={{ fontSize: 'clamp(14px, 3vw, 18px)' }}>PLAYGROUND</span>
+          <span className="pg-logo font-black tracking-tighter text-foreground">PLAYGROUND</span>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}

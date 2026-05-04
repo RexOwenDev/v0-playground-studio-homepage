@@ -154,6 +154,14 @@
   }
 }
 
+/* Nav logo sizing — pure CSS, no inline styles, SSR-safe */
+.pg-logo {
+  font-size: clamp(13px, 2.5vw, 17px);
+  letter-spacing: -0.03em;
+  transform-origin: center center;
+  display: inline-block;
+}
+
 /* Logo roll animation */
 @keyframes rollOnce {
   0% { transform: rotateX(0deg); }
@@ -165,14 +173,19 @@
   animation: rollOnce 0.6s ease-out forwards;
 }
 
-/* Marquee animation */
+/* Marquee animation — moves the whole track left by 50% (= one full set of words) */
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-.animate-marquee {
-  animation: marquee 30s linear infinite;
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  /* pausing via hover feels nice and lets users read */
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* Reduce motion for accessibility */
