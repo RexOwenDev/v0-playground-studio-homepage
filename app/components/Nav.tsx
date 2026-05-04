@@ -87,7 +87,7 @@ export default function Nav() {
           >
             <span 
               ref={logoRef}
-              className={`pg-logo inline-block font-black tracking-tighter text-foreground group-hover:opacity-70 transition-opacity duration-200 ${
+              className={`pg-logo inline-block font-black tracking-tighter text-xl sm:text-2xl text-foreground group-hover:opacity-70 transition-opacity duration-200 ${
                 hasRolled ? 'animate-roll-once' : ''
               }`}
             >
@@ -162,7 +162,7 @@ export default function Nav() {
       >
         {/* Close Button */}
         <div className="flex justify-between items-center p-4 sm:p-6">
-          <span className="pg-logo font-black tracking-tighter text-foreground">PLAYGROUND</span>
+          <span className="pg-logo font-black tracking-tighter text-xl sm:text-2xl text-foreground">PLAYGROUND</span>
           <button
             type="button"
             onClick={() => setMenuOpen(false)}
