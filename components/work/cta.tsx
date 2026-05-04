@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
 export function WorkCTA() {
   const ref = useRef<HTMLElement>(null)
@@ -37,12 +38,12 @@ export function WorkCTA() {
         <h2 className="text-xl sm:text-2xl md:text-3xl font-medium uppercase tracking-tight">
           Have a project in mind?
         </h2>
-        <a
+        <Link
           href="/contact"
           className="inline-block mt-6 text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
         >
           Start a conversation →
-        </a>
+        </Link>
       </div>
     </section>
   )

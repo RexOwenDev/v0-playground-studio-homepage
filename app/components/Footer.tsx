@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
         {/* Logo */}
         <div>
-          <Link href="/" aria-label="Playground Studio">
+          <Link href="/" aria-label="Playground Studio — Home" className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current inline-block">
             <svg width="100" height="24" viewBox="0 0 100 24" fill="none">
               <text
                 x="0"

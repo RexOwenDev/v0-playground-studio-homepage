@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
 const PROJECTS = [
   { name: 'Saint Haven',        sector: 'Residential Property', seed: 'sainthaven'  },
@@ -35,7 +36,7 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
   }, [])
 
   return (
-    <a
+    <Link
       ref={ref}
       href="/work"
       className="block group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current transition-all duration-[600ms] ease-out"
@@ -64,7 +65,7 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
         <span className="text-sm uppercase tracking-[0.08em] font-medium">{project.name}</span>
         <span className="text-xs opacity-40">{project.sector}</span>
       </div>
-    </a>
+    </Link>
   )
 }
 
@@ -91,12 +92,12 @@ export function SelectedWork() {
 
       {/* CTA */}
       <div className="mt-12 text-center">
-        <a
+        <Link
           href="/work"
           className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
         >
           View all work →
-        </a>
+        </Link>
       </div>
     </section>
   )

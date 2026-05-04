@@ -166,6 +166,7 @@ export function ContactPageClient() {
     disabled?: boolean
   }) => (
     <button
+      type="button"
       onClick={onClick}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -176,7 +177,7 @@ export function ContactPageClient() {
       role={role}
       aria-checked={selected}
       disabled={disabled}
-      className={`min-h-[72px] sm:min-h-[80px] border flex items-center justify-center text-center px-3 py-4 cursor-pointer select-none transition-all duration-200 rounded-none text-xs uppercase tracking-[0.1em] font-medium leading-snug px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${
+      className={`min-h-[72px] sm:min-h-[80px] border flex items-center justify-center text-center px-4 py-4 cursor-pointer select-none transition-all duration-200 rounded-none text-xs uppercase tracking-[0.1em] font-medium leading-snug focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${
         selected
           ? 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white'
           : 'bg-transparent border-current/20 hover:border-current/60 hover:bg-current/5'
@@ -459,6 +460,7 @@ export function ContactPageClient() {
               <div className="mt-10 flex justify-between items-center">
                 {step > 1 ? (
                   <button
+                    type="button"
                     onClick={handleBack}
                     className="text-xs tracking-[0.2em] uppercase opacity-50 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
                   >
@@ -469,6 +471,7 @@ export function ContactPageClient() {
                 )}
 
                 <button
+                  type="button"
                   onClick={handleNext}
                   disabled={isSubmitting}
                   className="bg-black text-white dark:bg-white dark:text-black text-xs tracking-[0.2em] uppercase py-3 px-8 rounded-none hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"

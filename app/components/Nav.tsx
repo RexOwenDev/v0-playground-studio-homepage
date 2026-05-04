@@ -95,6 +95,7 @@ export default function Nav() {
         {/* Right controls */}
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             aria-label="Toggle dark/light mode"
             className="w-9 h-9 border border-current/20 rounded-full flex items-center justify-center hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
@@ -102,6 +103,7 @@ export default function Nav() {
             {resolvedTheme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
           </button>
           <button
+            type="button"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}
@@ -122,6 +124,7 @@ export default function Nav() {
           aria-label="Navigation menu"
         >
           <button
+            type="button"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
             className="absolute top-5 right-4 sm:right-8 w-9 h-9 flex items-center justify-center text-white hover:opacity-60 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"

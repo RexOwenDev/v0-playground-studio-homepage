@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 
 export function CapabilitiesPageClient() {
   return (
@@ -230,12 +231,12 @@ function StartProjectCTA() {
           Ready to build something bold?
         </h2>
         <div className="mt-6">
-          <a
+          <Link
             href="/contact"
             className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current inline-block"
           >
             Start a project →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

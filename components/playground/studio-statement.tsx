@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 
 export function StudioStatement() {
   const ref = useRef<HTMLElement>(null)
@@ -41,12 +42,12 @@ export function StudioStatement() {
         </h2>
 
         <div className="mt-6">
-          <a
+          <Link
             href="/contact"
             className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
           >
             Start a project →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -82,6 +82,9 @@ export function TeamPageClient() {
                   src={`https://picsum.photos/seed/${member.seed}/600/800`}
                   alt={`${member.name}, ${member.title} at Playground Studio`}
                   className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  loading="lazy"
+                  width={600}
+                  height={800}
                 />
               </div>
               <div className="mt-4 md:mt-5">

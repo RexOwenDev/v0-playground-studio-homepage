@@ -30,11 +30,12 @@ export function FilterBar({ activeFilter, onFilterChange }: FilterBarProps) {
     >
       <div
         ref={scrollContainerRef}
-        className="overflow-x-auto scrollbar-hide px-4 sm:px-8 flex flex-row gap-6 sm:gap-8 whitespace-nowrap min-w-max"
+        className="overflow-x-auto scrollbar-hide px-4 sm:px-8 flex flex-row gap-6 sm:gap-8 whitespace-nowrap"
       >
         {FILTERS.map((filter) => (
           <button
             key={filter}
+            type="button"
             onClick={() => onFilterChange(filter)}
             data-active={filter === activeFilter}
             className={`text-xs tracking-[0.2em] uppercase cursor-pointer transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current py-2 ${
