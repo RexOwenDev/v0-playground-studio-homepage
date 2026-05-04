@@ -2,182 +2,173 @@
 
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-
-function InstagramIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-    </svg>
-  )
-}
-
-function LinkedInIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  )
-}
+import { useEffect, useState, useRef } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function Footer() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const footerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Animate footer on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    
+    if (footerRef.current) {
+      observer.observe(footerRef.current)
+    }
+    
+    return () => observer.disconnect()
+  }, [])
+
   const navLinks = [
-    { label: 'Home', href: '/' },
     { label: 'Work', href: '/work' },
-    { label: 'Capability', href: '/capabilities' },
+    { label: 'Capabilities', href: '/capabilities' },
     { label: 'Team', href: '/team' },
     { label: 'Contact', href: '/contact' },
   ]
 
-  const socialLinks = [
-    { label: 'Instagram', href: 'https://www.instagram.com/_PLAYGROUNDSTUDIO/' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/playgroundstudio/' },
-    { label: 'Privacy Policy', href: '/privacy', internal: true },
-  ]
-
   return (
-    <footer className="border-t border-current/10">
-      {/* Main footer content */}
-      <div className="px-4 sm:px-8 py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-8 md:gap-16">
-          {/* Left column - Copyright and acknowledgement */}
-          <div className="space-y-6">
-            <p className="text-xs uppercase tracking-[0.1em] opacity-60">
-              © Playground Studio 2026
+    <footer 
+      ref={footerRef}
+      className="border-t border-current/10 mt-16 md:mt-24"
+    >
+      {/* CTA Section */}
+      <div 
+        className={`px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center transition-all duration-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <p className="text-xs tracking-widest uppercase opacity-50 mb-4">Ready to start?</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight max-w-4xl mx-auto">
+          Let&apos;s create something bold together.
+        </h2>
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2 mt-8 text-sm tracking-wide border border-current/30 px-6 py-3 hover:bg-current hover:text-background transition-all duration-300 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+        >
+          Start a conversation
+          <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="border-t border-current/10 px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
+          {/* Brand Column */}
+          <div className="lg:col-span-2 space-y-6">
+            <Link href="/" className="inline-block text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity">
+              Playground Studio
+            </Link>
+            <p className="text-sm leading-relaxed opacity-60 max-w-md">
+              A Melbourne creative studio of designers, writers, strategists and big dreamers. We make work that moves you.
             </p>
-            <p className="text-xs leading-relaxed opacity-50 max-w-sm">
-              We acknowledge First Nations peoples as the traditional custodians of lands, seas and waters throughout Australia. Our studio stands on the land of the Boon Wurrung people of the Kulin Nation, and we pay our respects to their elders past and present.
-            </p>
-            
-            {/* Theme Toggle */}
-            {mounted && (
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setTheme('light')}
-                  className={`text-xs uppercase tracking-[0.1em] transition-opacity ${
-                    resolvedTheme === 'light' ? 'opacity-100' : 'opacity-40 hover:opacity-70'
-                  }`}
-                >
-                  Light
-                </button>
-                <div 
-                  className="w-12 h-6 rounded-full bg-current/10 relative cursor-pointer"
-                  onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-                  role="switch"
-                  aria-checked={resolvedTheme === 'dark'}
-                  aria-label="Toggle theme"
-                >
-                  <div 
-                    className={`absolute top-1 w-4 h-4 rounded-full bg-current transition-all duration-200 ${
-                      resolvedTheme === 'dark' ? 'left-7' : 'left-1'
-                    }`}
-                  />
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setTheme('dark')}
-                  className={`text-xs uppercase tracking-[0.1em] transition-opacity ${
-                    resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-40 hover:opacity-70'
-                  }`}
-                >
-                  Dark
-                </button>
-              </div>
-            )}
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.instagram.com/_PLAYGROUNDSTUDIO/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm opacity-60 hover:opacity-100 transition-opacity group"
+              >
+                Instagram
+                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/playgroundstudio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm opacity-60 hover:opacity-100 transition-opacity group"
+              >
+                LinkedIn
+                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </div>
 
-          {/* Middle column - Navigation */}
-          <nav className="flex flex-col gap-3" aria-label="Footer navigation">
+          {/* Navigation */}
+          <nav className="space-y-3" aria-label="Footer navigation">
+            <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Navigate</p>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 prefetch={true}
-                className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+                className="block text-sm opacity-60 hover:opacity-100 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right column - Social */}
-          <div className="flex flex-col gap-3">
-            {socialLinks.map((link) => (
-              link.internal ? (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-                >
-                  {link.label}
-                </a>
-              )
-            ))}
+          {/* Contact Info */}
+          <div className="space-y-3">
+            <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Contact</p>
+            <a 
+              href="mailto:hello@playgroundstudio.com.au"
+              className="block text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              hello@playgroundstudio.com.au
+            </a>
+            <a 
+              href="tel:+61419248668"
+              className="block text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              +61 419 248 668
+            </a>
+            <p className="text-sm opacity-40">
+              23 Union St<br />
+              South Melbourne VIC 3205
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Scrolling PLAYGROUND marquee */}
-      <div className="overflow-hidden border-t border-current/5 py-4">
-        <div 
-          className="flex whitespace-nowrap animate-marquee"
-          style={{
-            width: 'fit-content',
-          }}
-        >
-          {[...Array(4)].map((_, i) => (
-            <span 
-              key={i} 
-              className="text-[20vw] sm:text-[15vw] md:text-[12vw] font-black uppercase leading-none tracking-[-0.02em] mx-4 select-none"
-              style={{ fontStretch: 'condensed' }}
-              aria-hidden={i > 0}
+      {/* Bottom Bar */}
+      <div className="border-t border-current/10 px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <p className="text-xs opacity-40">
+              © {new Date().getFullYear()} Playground Studio
+            </p>
+            <Link 
+              href="/privacy" 
+              className="text-xs opacity-40 hover:opacity-70 transition-opacity"
             >
-              PLAYGROUND
-            </span>
-          ))}
+              Privacy Policy
+            </Link>
+          </div>
+          
+          {/* Theme Toggle */}
+          {mounted && (
+            <button
+              type="button"
+              onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+              className="text-xs opacity-40 hover:opacity-70 transition-opacity flex items-center gap-2"
+            >
+              <span className={resolvedTheme === 'light' ? 'opacity-100' : 'opacity-50'}>Light</span>
+              <span className="text-current/30">/</span>
+              <span className={resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-50'}>Dark</span>
+            </button>
+          )}
         </div>
+        
+        {/* First Nations Acknowledgement */}
+        <p className="mt-8 text-xs leading-relaxed opacity-30 max-w-2xl">
+          We acknowledge First Nations peoples as the traditional custodians of lands, seas and waters throughout Australia. Our studio stands on the land of the Boon Wurrung people of the Kulin Nation, and we pay our respects to their elders past and present.
+        </p>
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee {
-            animation: none;
-          }
-        }
-      `}</style>
     </footer>
   )
 }

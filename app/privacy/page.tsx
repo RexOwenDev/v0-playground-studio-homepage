@@ -8,13 +8,14 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <article className="px-4 sm:px-8">
-      {/* Header - matching other page styles */}
-      <header className="py-12 md:py-20">
-        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-medium uppercase tracking-tight leading-[0.9]">
-          Privacy
+    <article className="px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <header className="py-16 md:py-24 max-w-6xl">
+        <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Legal</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.1]">
+          Privacy Policy
         </h1>
-        <p className="mt-6 text-xs tracking-[0.15em] uppercase opacity-50">
+        <p className="mt-4 text-sm opacity-50">
           Last updated: September 2023
         </p>
       </header>

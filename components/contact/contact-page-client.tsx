@@ -188,11 +188,13 @@ export function ContactPageClient() {
   )
 
   return (
-    <div className="px-4 sm:px-8">
-      {/* Large Title */}
-      <div className="py-12 md:py-20">
-        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-medium uppercase tracking-tight leading-[0.9]">
-          Contact
+    <div className="px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="py-16 md:py-24 max-w-6xl">
+        <p className="text-xs tracking-widest uppercase opacity-40 mb-4">Get in touch</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.1]">
+          Let&apos;s start
+          <span className="block opacity-60">a conversation.</span>
         </h1>
       </div>
       

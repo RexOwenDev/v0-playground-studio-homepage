@@ -2,22 +2,21 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 
 const PROJECTS = [
-  { name: 'Saint Haven',        sector: 'Residential Property', seed: 'sainthaven'  },
-  { name: 'Morris Moor',        sector: 'Residential Property', seed: 'morrismoor'  },
-  { name: 'Hope & Autumn',      sector: 'Residential Property', seed: 'hopeautumn'  },
-  { name: 'Champagne Problems', sector: 'Hospitality',          seed: 'champagne'   },
-  { name: 'REVL',               sector: 'Fitness & Activewear', seed: 'revl'        },
-  { name: 'Skinstitut',         sector: 'Skincare',             seed: 'skinstitut'  },
-  { name: 'Trielle',            sector: 'Residential Property', seed: 'trielle'     },
-  { name: 'Seren Row',          sector: 'Residential Property', seed: 'serenrow'    },
-  { name: 'Kinrise',            sector: 'Food & Beverage',      seed: 'kinrise'     },
+  { name: 'Saint Haven',        sector: 'Residential Property', seed: 'sainthaven', color: 'from-amber-500/20' },
+  { name: 'Morris Moor',        sector: 'Residential Property', seed: 'morrismoor', color: 'from-emerald-500/20' },
+  { name: 'Hope & Autumn',      sector: 'Residential Property', seed: 'hopeautumn', color: 'from-rose-500/20' },
+  { name: 'Champagne Problems', sector: 'Hospitality',          seed: 'champagne', color: 'from-yellow-500/20' },
+  { name: 'REVL',               sector: 'Fitness & Activewear', seed: 'revl', color: 'from-blue-500/20' },
+  { name: 'Skinstitut',         sector: 'Skincare',             seed: 'skinstitut', color: 'from-pink-500/20' },
 ]
 
 function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index: number }) {
   const ref = useRef<HTMLAnchorElement>(null)
   const [visible, setVisible] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     const el = ref.current
@@ -39,66 +38,123 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
     <Link
       ref={ref}
       href="/work"
-      className="block group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current transition-all duration-[600ms] ease-out"
+      className="block group relative focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current transition-all duration-[600ms] ease-out"
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(16px)',
-        transitionDelay: `${index * 80}ms`,
+        transform: visible ? 'translateY(0)' : 'translateY(24px)',
+        transitionDelay: `${index * 100}ms`,
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       aria-label={`View ${project.name} project`}
     >
-      {/* Image */}
-      <div className="aspect-[16/10] overflow-hidden w-full">
+      {/* Image Container */}
+      <div className="relative aspect-[4/3] overflow-hidden rounded-sm">
+        {/* Gradient overlay on hover */}
+        <div 
+          className={`absolute inset-0 bg-gradient-to-t ${project.color} to-transparent z-10 transition-opacity duration-300 ${
+            isHovered ? 'opacity-100' : 'opacity-0'
+          }`}
+          aria-hidden="true"
+        />
+        
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`https://picsum.photos/seed/${project.seed}/900/562`}
+          src={`https://picsum.photos/seed/${project.seed}/800/600`}
           alt={`${project.name} by Playground Studio`}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           loading="lazy"
-          width={900}
-          height={562}
+          width={800}
+          height={600}
         />
+        
+        {/* View Project overlay */}
+        <div 
+          className={`absolute inset-0 flex items-center justify-center z-20 transition-all duration-300 ${
+            isHovered ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <span className="flex items-center gap-2 text-sm tracking-wide text-white bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full">
+            View project
+            <ArrowUpRight size={14} />
+          </span>
+        </div>
       </div>
 
       {/* Caption */}
-      <div className="mt-3 flex justify-between items-baseline">
-        <span className="text-sm uppercase tracking-[0.08em] font-medium">{project.name}</span>
-        <span className="text-xs opacity-40">{project.sector}</span>
+      <div className="mt-4 flex justify-between items-start gap-4">
+        <div>
+          <h3 className="text-base sm:text-lg font-medium tracking-tight group-hover:opacity-70 transition-opacity">
+            {project.name}
+          </h3>
+          <p className="text-xs sm:text-sm opacity-50 mt-0.5">{project.sector}</p>
+        </div>
+        <div 
+          className={`p-2 border border-current/20 rounded-full transition-all duration-300 ${
+            isHovered ? 'bg-current text-background' : ''
+          }`}
+        >
+          <ArrowUpRight size={14} />
+        </div>
       </div>
     </Link>
   )
 }
 
 export function SelectedWork() {
+  const [sectionVisible, setSectionVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true)
+        }
+      },
+      { threshold: 0.05 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="py-16 md:py-32 px-4 sm:px-8" aria-labelledby="work-heading">
+    <section 
+      ref={sectionRef}
+      className="py-20 md:py-32 px-4 sm:px-6 lg:px-8" 
+      aria-labelledby="work-heading"
+    >
       {/* Section header */}
-      <p
-        id="work-heading"
-        className="text-xs tracking-[0.2em] uppercase opacity-40"
+      <div 
+        className={`flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12 md:mb-16 transition-all duration-700 ${
+          sectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
       >
-        Selected Work
-      </p>
-      <div className="border-t border-current/10 mt-3 mb-10 md:mb-16" />
+        <div>
+          <p className="text-xs tracking-widest uppercase opacity-40 mb-2">Featured</p>
+          <h2 id="work-heading" className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight">
+            Selected Work
+          </h2>
+        </div>
+        <Link
+          href="/work"
+          className="text-sm opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 group"
+        >
+          View all projects
+          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </Link>
+      </div>
 
       {/* Grid */}
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 list-none p-0 m-0" role="list">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 list-none p-0 m-0" role="list">
         {PROJECTS.map((project, i) => (
           <li key={project.seed}>
             <ProjectCard project={project} index={i} />
           </li>
         ))}
       </ul>
-
-      {/* CTA */}
-      <div className="mt-12 text-center">
-        <Link
-          href="/work"
-          className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-        >
-          View all work →
-        </Link>
-      </div>
     </section>
   )
 }
