@@ -25,7 +25,7 @@ export function FilterBar({ activeFilter, onFilterChange }: FilterBarProps) {
 
   return (
     <nav
-      className="sticky top-[73px] z-40 bg-background dark:bg-background backdrop-blur-sm border-b border-current/10 py-4"
+      className="sticky top-[57px] z-40 bg-background/95 backdrop-blur-sm border-b border-current/10 py-4"
       aria-label="Project filters"
     >
       <div

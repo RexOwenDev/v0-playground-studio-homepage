@@ -1,39 +1,55 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 
 export function Hero() {
   const [visible, setVisible] = useState(false)
+  const [videoError, setVideoError] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
     return () => clearTimeout(t)
   }, [])
 
+  // Handle video load error gracefully
+  const handleVideoError = () => {
+    setVideoError(true)
+  }
+
   return (
     <section
       className="relative overflow-hidden"
       aria-label="Hero"
     >
-      {/* Video Background */}
-      <div className="relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.5/1] w-full">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/video-poster.jpg"
-        >
-          {/* Using a sample video - replace with actual Playground video */}
-          <source 
-            src="https://player.vimeo.com/external/517090081.sd.mp4?s=60b67e0cf5d8e7a3f62a7a31f3a3d2f0a9f0f0f0&profile_id=164&oauth2_token_id=57447761" 
-            type="video/mp4" 
+      {/* Video/Image Background */}
+      <div className="relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.5/1] w-full bg-neutral-900">
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onError={handleVideoError}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            {/* Placeholder video - shows brand work in motion */}
+            <source 
+              src="https://assets.mixkit.co/videos/preview/mixkit-ink-swirling-in-water-21-large.mp4" 
+              type="video/mp4" 
+            />
+          </video>
+        ) : (
+          /* Fallback gradient if video fails */
+          <div 
+            className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900"
+            aria-hidden="true"
           />
-        </video>
-        {/* Overlay for better text contrast if needed */}
-        <div className="absolute inset-0 bg-black/10" aria-hidden="true" />
+        )}
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
       </div>
 
       {/* Statement section */}

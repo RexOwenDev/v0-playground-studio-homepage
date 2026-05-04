@@ -44,7 +44,7 @@ export function StudioStatement() {
         <div className="mt-6">
           <Link
             href="/contact"
-            className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+            className="inline-block text-xs tracking-[0.15em] uppercase border border-current/30 px-6 py-3 hover:bg-current hover:text-background transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
           >
             Start a project →
           </Link>

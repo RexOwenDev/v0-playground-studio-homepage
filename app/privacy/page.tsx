@@ -8,18 +8,18 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <article className="py-16 md:py-32 px-4 sm:px-8 max-w-3xl mx-auto">
-      {/* Header */}
-      <header className="mb-12 md:mb-16">
-        <p className="text-xs tracking-[0.2em] uppercase opacity-50">Legal</p>
-        <div className="border-t border-current/10 mt-3 mb-6" />
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium uppercase tracking-tight leading-tight">
-          Privacy Policy
+    <article className="px-4 sm:px-8">
+      {/* Header - matching other page styles */}
+      <header className="py-12 md:py-20">
+        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-medium uppercase tracking-tight leading-[0.9]">
+          Privacy
         </h1>
-        <p className="mt-4 text-xs tracking-[0.15em] uppercase opacity-50">
-          September, 2023
+        <p className="mt-6 text-xs tracking-[0.15em] uppercase opacity-50">
+          Last updated: September 2023
         </p>
       </header>
+      
+      <div className="max-w-3xl pb-16 md:pb-32">
 
       {/* Content */}
       <div className="prose prose-sm max-w-none space-y-8 text-sm leading-relaxed opacity-80">
@@ -155,6 +155,7 @@ export default function PrivacyPage() {
             ← Back to Home
           </Link>
         </div>
+      </div>
       </div>
     </article>
   )
