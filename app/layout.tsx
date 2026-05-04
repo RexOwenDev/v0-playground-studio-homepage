@@ -5,6 +5,7 @@ import { Providers } from './providers'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import PageTransition from './components/PageTransition'
+import { FaviconSwitcher } from './components/FaviconSwitcher'
 import './globals.css'
 
 const inter = Inter({
@@ -25,6 +26,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Playground Studio — Bold, Brave Brands',
   description: 'A Melbourne creative studio of designers, writers, strategists and big dreamers.',
+  icons: {
+    icon: [
+      { url: '/favicon-black.png', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon-white.png', media: '(prefers-color-scheme: dark)' },
+    ],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
         <Providers>
+          <FaviconSwitcher />
           <Nav />
           <PageTransition>
             <main id="main-content">
