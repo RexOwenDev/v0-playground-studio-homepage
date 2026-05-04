@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Playground Studio',
+  title: 'Privacy',
   description: 'Privacy Policy for Playground Studio. Learn how we collect, store, use, and protect your personal information.',
 }
 
