@@ -1,4 +1,8 @@
+'use client'
+
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -21,7 +25,15 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 
 export default function Footer() {
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const navLinks = [
+    { label: 'Home', href: '/' },
     { label: 'Work', href: '/work' },
     { label: 'Capability', href: '/capabilities' },
     { label: 'Team', href: '/team' },
@@ -29,85 +41,143 @@ export default function Footer() {
   ]
 
   const socialLinks = [
-    { label: 'Instagram', href: 'https://www.instagram.com/_PLAYGROUNDSTUDIO/', icon: InstagramIcon },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/playgroundstudio/', icon: LinkedInIcon },
+    { label: 'Instagram', href: 'https://www.instagram.com/_PLAYGROUNDSTUDIO/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/playgroundstudio/' },
+    { label: 'Privacy Policy', href: '/privacy', internal: true },
   ]
 
   return (
-    <footer className="border-t border-current/10 py-10 md:py-12 px-4 sm:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start md:items-center">
-        {/* Logo */}
-        <div>
-          <Link 
-            href="/" 
-            aria-label="Playground Studio — Home" 
-            className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current inline-block"
-          >
-            <span className="text-sm font-semibold uppercase tracking-tight">
-              Playground Studio
-            </span>
-          </Link>
-        </div>
-        {/* Address */}
-        <p className="text-xs opacity-60 md:text-center">
-          23 Union St · South Melbourne · VIC 3205
-        </p>
-        {/* Contact */}
-        <div className="md:text-right">
-          <a 
-            href="mailto:hello@playgroundstudio.com.au"
-            className="text-xs opacity-60 hover:opacity-100 transition-opacity duration-200"
-          >
-            hello@playgroundstudio.com.au
-          </a>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-current/10 mt-8 pt-6">
-        <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center">
-          {/* Copyright and Privacy */}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-            <p className="text-xs opacity-50">© 2026 Playground Studio. All rights reserved.</p>
-            <Link 
-              href="/privacy"
-              className="text-xs opacity-50 hover:opacity-100 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-            >
-              Privacy Policy
-            </Link>
+    <footer className="border-t border-current/10">
+      {/* Main footer content */}
+      <div className="px-4 sm:px-8 py-10 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-8 md:gap-16">
+          {/* Left column - Copyright and acknowledgement */}
+          <div className="space-y-6">
+            <p className="text-xs uppercase tracking-[0.1em] opacity-60">
+              © Playground Studio 2026
+            </p>
+            <p className="text-xs leading-relaxed opacity-50 max-w-sm">
+              We acknowledge First Nations peoples as the traditional custodians of lands, seas and waters throughout Australia. Our studio stands on the land of the Boon Wurrung people of the Kulin Nation, and we pay our respects to their elders past and present.
+            </p>
+            
+            {/* Theme Toggle */}
+            {mounted && (
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setTheme('light')}
+                  className={`text-xs uppercase tracking-[0.1em] transition-opacity ${
+                    resolvedTheme === 'light' ? 'opacity-100' : 'opacity-40 hover:opacity-70'
+                  }`}
+                >
+                  Light
+                </button>
+                <div 
+                  className="w-12 h-6 rounded-full bg-current/10 relative cursor-pointer"
+                  onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+                  role="switch"
+                  aria-checked={resolvedTheme === 'dark'}
+                  aria-label="Toggle theme"
+                >
+                  <div 
+                    className={`absolute top-1 w-4 h-4 rounded-full bg-current transition-all duration-200 ${
+                      resolvedTheme === 'dark' ? 'left-7' : 'left-1'
+                    }`}
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setTheme('dark')}
+                  className={`text-xs uppercase tracking-[0.1em] transition-opacity ${
+                    resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-40 hover:opacity-70'
+                  }`}
+                >
+                  Dark
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Navigation */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer navigation">
+          {/* Middle column - Navigation */}
+          <nav className="flex flex-col gap-3" aria-label="Footer navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 prefetch={true}
-                className="text-xs tracking-[0.15em] uppercase opacity-50 hover:opacity-100 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+                className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Follow us on ${social.label}`}
-                className="opacity-50 hover:opacity-100 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
+          {/* Right column - Social */}
+          <div className="flex flex-col gap-3">
+            {socialLinks.map((link) => (
+              link.internal ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs uppercase tracking-[0.1em] opacity-60 hover:opacity-100 transition-opacity w-fit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </div>
         </div>
       </div>
+
+      {/* Scrolling PLAYGROUND marquee */}
+      <div className="overflow-hidden border-t border-current/5 py-4">
+        <div 
+          className="flex whitespace-nowrap animate-marquee"
+          style={{
+            width: 'fit-content',
+          }}
+        >
+          {[...Array(4)].map((_, i) => (
+            <span 
+              key={i} 
+              className="text-[20vw] sm:text-[15vw] md:text-[12vw] font-black uppercase leading-none tracking-[-0.02em] mx-4 select-none"
+              style={{ fontStretch: 'condensed' }}
+              aria-hidden={i > 0}
+            >
+              PLAYGROUND
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation: none;
+          }
+        }
+      `}</style>
     </footer>
   )
 }

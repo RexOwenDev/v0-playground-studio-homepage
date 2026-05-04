@@ -188,10 +188,17 @@ export function ContactPageClient() {
   )
 
   return (
-    <div className="py-16 md:py-32 px-4 sm:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start">
+    <div className="px-4 sm:px-8">
+      {/* Large Title */}
+      <div className="py-12 md:py-20">
+        <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-medium uppercase tracking-tight leading-[0.9]">
+          Contact
+        </h1>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 md:gap-20 items-start pb-16 md:pb-32">
         {/* LEFT COLUMN */}
-        <div className="md:sticky md:top-32">
+        <div className="md:sticky md:top-24">
           <div className="text-xs tracking-[0.2em] uppercase opacity-50">
             GET IN TOUCH
           </div>
