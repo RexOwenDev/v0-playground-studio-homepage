@@ -180,7 +180,7 @@
 }
 
 .marquee-track {
-  animation: marquee 28s linear infinite;
+  animation: marquee 35s linear infinite;
 }
 
 /* Reduce motion for accessibility */
